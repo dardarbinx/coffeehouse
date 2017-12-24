@@ -12,10 +12,14 @@
 // Takes up all window space, except topbar
 .fill {
   position: absolute;
-  top: $navbar-height;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: $footer-height;
+  bottom: 0;
 }
 
 
+:host /deep/ router-outlet + * > .content {
+  border: 1px solid red;
+  height: 100vh;
+}
