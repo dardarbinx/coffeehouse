@@ -12,7 +12,9 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { LocationComponent } from './location/location.component';
 import { OpeninghoursComponent } from './openinghours/openinghours.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -30,11 +32,16 @@ import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material';
     AppRoutingModule,
     AppBootstrapModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSliderModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBDSsSaC6fWYl6usbSehP5KWwUhMm7Pq84'
+    })
   ],
   exports: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSliderModule
   ],
   providers: [
   ],
