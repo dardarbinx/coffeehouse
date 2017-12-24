@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~font-awesome/css/font-awesome.css';
+@import "_variables.scss";
+@import "_animations.scss";
+
+@font-face {
+  font-family: "GrandHotel";
+  src: url("./assets/fonts/GrandHotel-Regular.ttf");
+}
+
+.title-font {
+  font-family: "GrandHotel";
+}
+
+.navbar-dark {
+  background-color: $chocolate;
+}
+
+.container.jumbotron {
+  background-color: white;
+  border-top: 4px solid $chocolate;
+  opacity: 0.75;
+}
+
+a {
+  cursor: pointer;
+}

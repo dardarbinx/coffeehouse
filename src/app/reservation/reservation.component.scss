@@ -1,0 +1,19 @@
+input {
+  border-width: 0px 0px 1px;
+  padding: 0.8rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  padding: 8px;
+  color: #495057;
+  border-radius: 0;
+}
+
+#datepicker {
+  border-color: #ced4da;
+
+  &::placeholder {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #989b9f;
+  }
+}
