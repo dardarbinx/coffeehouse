@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material';
 import { AgmCoreModule } from '@agm/core';
+// import 'bootstrap';
 
 @NgModule({
   declarations: [
