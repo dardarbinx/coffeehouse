@@ -1,21 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss']
 })
-export class TopbarComponent implements OnInit {
+export class TopbarComponent {
+
+  loggedIn = false;
 
   constructor(
-    private router: Router
-  ) { }
-
-  ngOnInit() {
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.authService.loggedIn$.subscribe((value) => {
+      this.loggedIn = value;
+    });
   }
 
   navigate(path: string): void {
     this.router.navigate([path]);
+  }
+
+  logout(): void {
+    this.authService.logout()
+      .then(() => {
+        console.log('Logged out user.');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  checkUser(): void {
+    console.log(this.authService.user$.getValue());
   }
 }

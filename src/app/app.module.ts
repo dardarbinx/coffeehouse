@@ -30,7 +30,10 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 
 // Services
-import { AuthService } from './services/auth.service';
+import { AuthService } from './_services/auth.service';
+
+// Guards
+import { AuthGuard } from './_guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,8 @@ import { AuthService } from './services/auth.service';
     SharedModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
