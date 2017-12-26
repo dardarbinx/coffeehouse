@@ -33,8 +33,4 @@ export class TopbarComponent {
         console.log(err);
       });
   }
-
-  checkUser(): void {
-    console.log(this.authService.user$.getValue());
-  }
 }

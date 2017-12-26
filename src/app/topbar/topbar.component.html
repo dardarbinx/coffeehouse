@@ -24,9 +24,6 @@
         <a class="nav-link" (click)="navigate('/reservation')">Make Reservation</a>
       </li>
     </ul>
-    <button class="btn btn-primary mx-auto" (click)="checkUser()">
-        Check user
-      </button>
     <button *ngIf="!loggedIn" type="button" class="btn btn-outline-light cursor-pointer ml-auto" data-toggle="modal" data-target="#loginModal">
       Login
     </button>
