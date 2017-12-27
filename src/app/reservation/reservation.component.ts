@@ -76,9 +76,13 @@ export class ReservationComponent implements OnInit {
          this.displayName = '';
          this.emailAddress = '';
       }
+      this.guests = 4;
+      this.date = new Date();
    }
 
    clearForm() {
       this.reservationForm.reset();
+      this.reservationForm.controls.guests.setValue(4);
+      this.reservationForm.controls.date.setValue(new Date());
    }
 }
