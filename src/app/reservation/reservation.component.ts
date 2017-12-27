@@ -36,7 +36,6 @@ export class ReservationComponent implements OnInit {
 
    constructor(private authService: AuthService,
       private fb: FormBuilder) {
-
       this.authService.user$.subscribe(user => {
          this.setValues(user);
       });
