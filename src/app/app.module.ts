@@ -35,6 +35,7 @@ import { AuthService } from './_services/auth.service';
 
 // Guards
 import { AuthGuard } from './_guards/auth.guard';
+import { DataService } from './_services/data.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { AuthGuard } from './_guards/auth.guard';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,82 +1,83 @@
 <div class="content">
-   <div class="container jumbotron my-0 my-md-2">
-      <h1 class="title-font">Reservation</h1>
-      <form [formGroup]="reservationForm">
+  <div class="container jumbotron my-0 my-md-2">
+    <h1 class="title-font">Reservation</h1>
+    <form [formGroup]="reservationForm">
 
-         <!-- Email -->
-         <app-validated-input [formGroup]="reservationForm.controls.emailAddress"
-                              controlName="emailAddress"
-                              placeholder="john.smith@gmail.com"
-                              formType="email"
-                              [inputValue]="emailAddress"
-                              label="Email Address"
-                              [required]="true"></app-validated-input>
+      <!-- Email -->
+      <app-validated-input [formGroup]="reservationForm.controls.emailAddress"
+                           controlName="emailAddress"
+                           placeholder="john.smith@gmail.com"
+                           formType="email"
+                           [(inputValue)]="this.reservationForm.get('emailAddress.emailAddress').value"
+                           label="Email Address"
+                           [required]="true"></app-validated-input>
 
-         <!-- Name -->
-         <app-validated-input [formGroup]="reservationForm.controls.displayName"
-                              controlName="displayName"
-                              placeholder="John Smith"
-                              formType="text"
-                              [inputValue]="displayName"
-                              label="Full Name"
-                              [required]="true"></app-validated-input>
+      <!-- Name -->
+      <app-validated-input [formGroup]="reservationForm.controls.displayName"
+                           controlName="displayName"
+                           placeholder="John Smith"
+                           formType="text"
+                           [(inputValue)]="this.reservationForm.get('displayName.displayName').value"
+                           label="Full Name"
+                           [required]="true"></app-validated-input>
 
+      <!-- Date -->
+      <div class="form-group row">
+        <label class="col-form-label col-form-label-lg col-12 col-md-2 offset-md-2"
+               for="name">Date</label>
+        <input id="datepicker"
+               class="pl-0"
+               [value]="this.reservationForm.get('date').value"
+               [min]="today"
+               matInput
+               [matDatepicker]="picker"
+               placeholder="Choose a date"
+               formControlName="date">
+        <mat-datepicker-toggle matSuffix
+                               [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
 
-         <!-- Date -->
-         <div class="form-group row">
-            <label class="col-form-label col-form-label-lg col-12 col-md-2 offset-md-2"
-                   for="name">Date</label>
-            <input id="datepicker"
-                   class="pl-0"
-                   [value]="date"
-                   [min]="date"
-                   matInput
-                   [matDatepicker]="picker"
-                   placeholder="Choose a date"
-                   formControlName="date">
-            <mat-datepicker-toggle matSuffix
-                                   [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-         </div>
-
-         <!-- Guests -->
-         <div class="form-group row">
-            <label class="col-form-label col-form-label-lg col-12 col-md-2 offset-md-2"
-                   for="guests">Guests</label>
-            <label class="col-form-label col-form-label-lg col-12 col-md-4 pl-0">
+      <!-- Guests -->
+      <div class="form-group row">
+        <label class="col-form-label col-form-label-lg col-12 col-md-2 offset-md-2"
+               for="guests">Guests</label>
+        <label class="col-form-label col-form-label-lg col-12 col-md-4 pl-0">
                {{ reservationForm.controls.guests.value }} guests
             </label>
-            <mat-slider formControlName="guests"
-                        name="guests"
-                        thumbLabel
-                        tickInterval="1"
-                        class="col-12 col-md-4 offset-md-4"
-                        min="2"
-                        max="20"
-                        step="1"></mat-slider>
-         </div>
+        <mat-slider formControlName="guests"
+                    name="guests"
+                    thumbLabel
+                    tickInterval="1"
+                    class="col-12 col-md-4 offset-md-4"
+                    min="2"
+                    max="20"
+                    step="1"></mat-slider>
+      </div>
 
-         <!-- Comments -->
-         <div class="form-group row">
-            <label class="col-form-label col-form-label-lg col-12 col-md-8 offset-md-2"
-                   for="comments">Comments</label>
-            <textarea class="form-control col-12 col-md-7 offset-md-3"
-                      formControlName="comments"
-                      id="comments"
-                      rows="3"></textarea>
-         </div>
-         <div class="col-12 d-flex justify-content-center">
-            <div class="p-4">
-               <button type="submit"
-                       class="btn btn-lg btn-outline-danger mx-auto cursor-pointer"
-                       (click)="clearForm()">Clear</button>
-               <button type="submit"
-                       class="btn btn-lg btn-primary mx-auto cursor-pointer">Submit</button>
-            </div>
-         </div>
-      </form>
-   </div>
+      <!-- Comments -->
+      <div class="form-group row">
+        <label class="col-form-label col-form-label-lg col-12 col-md-8 offset-md-2"
+               for="comments">Comments</label>
+        <textarea class="form-control col-12 col-md-7 offset-md-3"
+                  formControlName="comments"
+                  id="comments"
+                  rows="3"></textarea>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <div class="p-4">
+          <button type="submit"
+                  class="btn btn-lg btn-outline-danger mx-auto cursor-pointer"
+                  (click)="clearForm()">Clear</button>
+          <button type="submit"
+                  class="btn btn-lg btn-primary mx-auto cursor-pointer"
+                  (click)="submitForm()"
+                  [disabled]="reservationForm.invalid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
-   <!-- Footer -->
-   <app-bottombar></app-bottombar>
+  <!-- Footer -->
+  <app-bottombar></app-bottombar>
 </div>

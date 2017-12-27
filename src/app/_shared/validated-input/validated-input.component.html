@@ -1,34 +1,32 @@
 <div>
-   <div class="form-group row"
-        [formGroup]="formGroup"
-        [ngClass]="
-  {
-    'error':
-      formGroup.controls[controlName].errors &&
-      formGroup.controls[controlName].dirty &&
-      !formGroup.controls[controlName].focus
-  }">
-      <label class="col-form-label col-form-label-lg col-12 col-md-2 offset-md-2"
-             [for]="inputId">
+  <div class="form-group row"
+       [formGroup]="formGroup"
+       [ngClass]="{
+          'error':
+            formGroup.controls[controlName].errors &&
+            formGroup.controls[controlName].dirty
+        }">
+    <label class="col-form-label col-form-label-lg col-12 col-md-2 offset-md-2"
+           [for]="inputId">
       {{ label }}
     </label>
-      <input [value]="inputValue"
-             [formControlName]="controlName"
-             [required]="required"
-             class="form-control form-control-lg col-12 col-md-6 p-0"
-             [type]="formType"
-             [id]="inputId"
-             [placeholder]="placeholder">
-      <!-- Validation -->
-      <div *ngIf="formGroup.controls[controlName].errors &&
+    <input [value]="inputValue"
+           [formControlName]="controlName"
+           [required]="required"
+           class="form-control form-control-lg col-12 col-md-6 p-0"
+           [type]="formType"
+           [id]="inputId"
+           [placeholder]="placeholder">
+    <!-- Validation -->
+    <div *ngIf="formGroup.controls[controlName].errors &&
               !formGroup.controls[controlName].pristine"
-           class="error-msg p-0 col-12 col-md-6 offset-md-4">
-         <div [hidden]="!formGroup.controls[controlName].errors.required">
-            {{ label }} is required.
-         </div>
-         <div [hidden]="!formGroup.controls[controlName].errors.patternInvalid">
-            {{ label }} is invalid.
-         </div>
+         class="error-msg p-0 col-12 col-md-6 offset-md-4">
+      <div [hidden]="!formGroup.controls[controlName].errors.required">
+        {{ label }} is required.
       </div>
-   </div>
+      <div [hidden]="!formGroup.controls[controlName].errors.patternInvalid">
+        {{ label }} is invalid.
+      </div>
+    </div>
+  </div>
 </div>

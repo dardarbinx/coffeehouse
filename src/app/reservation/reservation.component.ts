@@ -16,73 +16,70 @@ import {
    Validators,
    FormBuilder
 } from '@angular/forms';
-import {
-   patternValidator
-} from '../_shared/validators/pattern-validator';
+import { Observable } from 'rxjs/Observable';
+import { DataService } from '../_services/data.service';
+import { emailPatternValidator } from '../_shared/validators/email-pattern-validator';
 
 @Component({
    selector: 'app-reservation',
    templateUrl: './reservation.component.html',
    styleUrls: ['./reservation.component.scss']
 })
-export class ReservationComponent implements OnInit {
-   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
+export class ReservationComponent {
+   @ViewChild(MatDatepicker) datepicker: MatDatepicker < Date > ;
 
    reservationForm: FormGroup;
-   displayName = '';
-   emailAddress = '';
-   date = new Date();
-   guests = 4;
+   today = new Date();
 
    constructor(private authService: AuthService,
+      private dataService: DataService,
       private fb: FormBuilder) {
+
       this.authService.user$.subscribe(user => {
-         this.setValues(user);
+         this.createForm(user);
       });
    }
 
-   ngOnInit(): void {
-      this.createForm();
-   }
+   createForm(user: firebase.User): void {
+      let displayName = '';
+      let email = '';
+      if (user !== null) {
+         displayName = user.displayName;
+         email = user.email;
+      }
 
-   createForm(): void {
       this.reservationForm = this.fb.group({
          // Use nested form groups to be able to use validated-input.component
          emailAddress: this.fb.group({
-            emailAddress: new FormControl('', [
+            emailAddress: new FormControl(email, [
                Validators.required,
-               patternValidator(
-                  // tslint:disable-next-line
-                  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-               )
+               emailPatternValidator()
             ])
          }),
          displayName: this.fb.group({
-            displayName: new FormControl('',
+            displayName: new FormControl(displayName,
                Validators.required)
          }),
-         // Validation not needed
+         // Validation messages not needed
          guests: new FormControl(4),
          date: new FormControl(new Date()),
          comments: new FormControl('')
-      })
-   }
-
-   setValues(user: firebase.User): void {
-      if (user !== null) {
-         this.displayName = user.displayName;
-         this.emailAddress = user.email;
-      } else {
-         this.displayName = '';
-         this.emailAddress = '';
-      }
-      this.guests = 4;
-      this.date = new Date();
+      });
    }
 
    clearForm() {
       this.reservationForm.reset();
-      this.reservationForm.controls.guests.setValue(4);
-      this.reservationForm.controls.date.setValue(new Date());
+      this.reservationForm.setValue({ 'guests': 4 });
+      this.reservationForm.setValue({ 'date': new Date() });
+   }
+
+   submitForm(): void {
+      this.dataService.addReservation({
+         displayName: this.reservationForm.get('displayName.displayName').value,
+         emailAddress: this.reservationForm.get('emailAddress.emailAddress').value,
+         guests: this.reservationForm.controls.guests.value,
+         date: this.reservationForm.controls.date.value,
+         comments: this.reservationForm.controls.comments.value
+      });
    }
 }
