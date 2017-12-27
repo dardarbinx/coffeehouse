@@ -1,0 +1,31 @@
+<div class="form-group row"
+  [ngClass]="
+  {
+    'error':
+      formGroup.controls[formControlName].errors &&
+      formGroup.controls[formControlName].dirty &&
+      !formGroup.controls[formControlName].focus
+  }">
+  <label class="col-form-label col-form-label-lg col-12 col-md-2 offset-md-2"
+    [for]="inputId">
+  {{ label }}
+  </label>
+  <input [value]="inputValue"
+    [formControlName]="formControlName"
+    [required]="required"
+    class="form-control form-control-lg col-12 col-md-6 p-0"
+    [type]="formType"
+    [id]="inputId"
+    [placeholder]="placeholder">
+  <!-- Validation -->
+  <div *ngIf="formGroup.controls[formControlName].errors &&
+              !formGroup.controls[formControlName].pristine"
+    class="error-msg p-0 col-12 col-md-6 offset-md-4">
+    <div [hidden]="!formGroup.controls[formControlName].errors.required">
+      {{ label }} is required.
+    </div>
+    <div [hidden]="!formGroup.controls[formControlName].errors.patternInvalid">
+      {{ label }} is invalid.
+    </div>
+  </div>
+</div>
