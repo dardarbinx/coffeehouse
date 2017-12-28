@@ -38,6 +38,8 @@ export class DataService {
           .add(reservation)
           .then(() => {
             console.log('Successfully added reservation.');
+          }, (error) => {
+            console.log(error);
           });
    }
 
