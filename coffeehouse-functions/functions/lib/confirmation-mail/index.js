@@ -18,22 +18,22 @@ const APP_NAME = 'Coffee House';
 exports.listener = functions.firestore.document('/reservations/{uid}').onCreate((event) => {
     const data = event.data.data();
     const mailOptions = {
-        from: '"Spammy Corp." <noreply@firebase.com>',
+        from: `"${APP_NAME}"`,
         to: data.emailAddress
     };
     // Building Email message.
     mailOptions.subject = `Your reservation for ${data.date}`;
     mailOptions.text =
         `Dear ${data.displayName},
-      
-      Thanks for making a reservation. Here are your reservation details:
-      Date: ${data.date}.
-      Number of guests: ${data.guests}.
-      Comments: ${data.comments}
-      
-      See you soon!
-      
-      ${APP_NAME}`;
+
+Thanks for making a reservation. Here are your reservation details:
+Date: ${data.date}.
+Number of guests: ${data.guests}.
+Comments: ${data.comments}
+
+See you soon!
+
+${APP_NAME}`;
     return mailTransport.sendMail(mailOptions)
         .then(() => console.log(`Reservation email sent to:`, data.email))
         .catch(error => console.error('There was an error while sending the email:', error));

@@ -33,14 +33,9 @@ export class DataService {
          });
    }
 
-   addReservation(reservation: Reservation): void {
-      this.reservationsCollectionRef
-          .add(reservation)
-          .then(() => {
-            console.log('Successfully added reservation.');
-          }, (error) => {
-            console.log(error);
-          });
+   addReservation(reservation: Reservation): Promise<any> {
+      return this.reservationsCollectionRef
+                 .add(reservation);
    }
 
    getReservations(): Observable<Reservation[]> {

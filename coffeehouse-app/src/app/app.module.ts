@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './_shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 // Components
 import { AppComponent } from './app.component';
@@ -64,7 +65,8 @@ import { DataService } from './_services/data.service';
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    SharedModule
+    SharedModule,
+    ToastModule.forRoot(),
   ],
   exports: [
     MatDatepickerModule,

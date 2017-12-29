@@ -1,11 +1,9 @@
 import {
    Component,
    OnInit,
-   ViewChild
+   ViewChild,
+   ViewContainerRef
 } from '@angular/core';
-import {
-   MatDatepicker
-} from '@angular/material';
 import {
    AuthService
 } from '../_services/auth.service';
@@ -19,6 +17,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { DataService } from '../_services/data.service';
 import { emailPatternValidator } from '../_shared/validators/email-pattern-validator';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
    selector: 'app-reservation',
@@ -26,26 +25,32 @@ import { emailPatternValidator } from '../_shared/validators/email-pattern-valid
    styleUrls: ['./reservation.component.scss']
 })
 export class ReservationComponent {
-   @ViewChild(MatDatepicker) datepicker: MatDatepicker < Date > ;
+
+   private user: firebase.User;
 
    reservationForm: FormGroup;
    today = new Date();
 
    constructor(private authService: AuthService,
       private dataService: DataService,
-      private fb: FormBuilder) {
+      private fb: FormBuilder,
+      public toastr: ToastsManager,
+      private vRef: ViewContainerRef) {
+
+      this.toastr.setRootViewContainerRef(vRef);
 
       this.authService.user$.subscribe(user => {
-         this.createForm(user);
+        this.user = user;
+        this.createForm();
       });
    }
 
-   createForm(user: firebase.User): void {
+   createForm(): void {
       let displayName = '';
       let email = '';
-      if (user !== null) {
-         displayName = user.displayName;
-         email = user.email;
+      if (this.user !== null) {
+         displayName = this.user.displayName;
+         email = this.user.email;
       }
 
       this.reservationForm = this.fb.group({
@@ -68,9 +73,7 @@ export class ReservationComponent {
    }
 
    clearForm() {
-      this.reservationForm.reset();
-      this.reservationForm.setValue({ 'guests': 4 });
-      this.reservationForm.setValue({ 'date': new Date() });
+      this.createForm();
    }
 
    submitForm(): void {
@@ -78,8 +81,13 @@ export class ReservationComponent {
          displayName: this.reservationForm.get('displayName.displayName').value,
          emailAddress: this.reservationForm.get('emailAddress.emailAddress').value,
          guests: this.reservationForm.controls.guests.value,
-         date: this.reservationForm.controls.date.value,
+         date: this.reservationForm.controls.date.value.getDate(),
          comments: this.reservationForm.controls.comments.value
+      }).then((response) => {
+         this.toastr.success('Successfully saved reservation!');
+         this.clearForm();
+      }, (error) => {
+         this.toastr.error('Oh snap! Something went wrong!');
       });
    }
 }
