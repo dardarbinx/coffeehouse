@@ -20,20 +20,20 @@ input {
   }
 }
 
-.error {
-  input {
-    +.error-msg {
-      display: none;
-    }
+// .error {
+//   input {
+//     +.error-msg {
+//       display: none;
+//     }
 
-    &:not(:focus) {
-      border-bottom: 1px solid $danger;
-      color: $danger;
+//     &:not(:focus) {
+//       border-bottom: 1px solid $danger;
+//       color: $danger;
 
-      &+.error-msg {
-        display: block;
-        color: $danger;
-      }
-    }
-  }
-}
+//       &+.error-msg {
+//         display: block;
+//         color: $danger;
+//       }
+//     }
+//   }
+// }
