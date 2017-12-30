@@ -1,6 +1,7 @@
 /* Instead of classic text box, just a line underneath */
 input, select {
   background-color: inherit;
+  height: unset !important;
   border-width: 0px 0px 1px;
   padding: 0.8rem;
   font-size: 1.25rem;
