@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './_shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 // Components
 import { AppComponent } from './app.component';
@@ -52,6 +53,7 @@ import { DataService } from './_services/data.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
