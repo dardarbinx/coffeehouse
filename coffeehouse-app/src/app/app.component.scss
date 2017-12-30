@@ -1,4 +1,4 @@
-@import '../_variables.scss';
+@import '../sass/_variables.scss';
 
 .background-img {
   z-index: -1;
@@ -32,7 +32,6 @@
     bottom: 0;
 
     width: 100%;
-    //height: $footer-height;
 
     box-shadow: 0px -2px 2px;
     z-index: 1000;

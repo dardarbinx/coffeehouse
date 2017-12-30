@@ -1,39 +1,12 @@
-@import '../../_variables.scss';
+@import '../../sass/_variables.scss';
 
-input {
-  border-width: 0px 0px 1px;
-  padding: 0.8rem;
-  font-size: 1.25rem;
-  font-weight: 400;
-  padding: 8px;
-  color: #495057;
-  border-radius: 0;
+#datepicker, #timepicker {
+  padding: 0px;
+  padding-left: 1.5rem;
 }
 
-#datepicker {
-  border-color: #ced4da;
-
-  &::placeholder {
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: #989b9f;
-  }
+i.fa {
+  position: relative;
+  left: 0;
+  top: 1.5rem;
 }
-
-// .error {
-//   input {
-//     +.error-msg {
-//       display: none;
-//     }
-
-//     &:not(:focus) {
-//       border-bottom: 1px solid $danger;
-//       color: $danger;
-
-//       &+.error-msg {
-//         display: block;
-//         color: $danger;
-//       }
-//     }
-//   }
-// }

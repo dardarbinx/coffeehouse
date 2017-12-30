@@ -1,0 +1,73 @@
+/* Instead of classic text box, just a line underneath */
+input, select {
+  background-color: inherit;
+  border-width: 0px 0px 1px;
+  padding: 0.8rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  padding: 8px;
+  color: #495057;
+  border-radius: 0 !important;
+}
+
+textarea {
+  background-color: inherit;
+  border-width: 1px;
+  padding: 0rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #495057;
+  border-radius: 0 !important;
+
+  &::placeholder {
+    font-size: 0.9rem;
+    color: #495057;
+    font-weight: 400;
+  }
+}
+
+/*
+Shows label in input field and smoothly goes to top when there's input
+<label>
+  <div class="label-text">label</div>
+  <input>
+</label>
+*/
+label {
+  display: block;
+  width: 100%;
+}
+
+label .label-text {
+  -moz-transform: translateY(-18px);
+  -ms-transform: translateY(-18px);
+  -webkit-transform: translateY(-18px);
+  transform: translateY(-18px);
+  transition: all 0.3s;
+}
+
+label input:focus+.label-text,
+label select:focus+.label-text {
+  -moz-transform: translateY(-55px);
+  -ms-transform: translateY(-55px);
+  -webkit-transform: translateY(-55px);
+  transform: translateY(-55px);
+  transition: all 0.3s;
+}
+
+label input:valid+.label-text,
+.error label input+.label-text,
+label select:valid+.label-text,
+.error label select+.label-text {
+  -moz-transform: translateY(-55px);
+  -ms-transform: translateY(-55px);
+  -webkit-transform: translateY(-55px);
+  transform: translateY(-55px);
+}
+
+.form-control:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color: inherit !important;
+}
+

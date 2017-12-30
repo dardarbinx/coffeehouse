@@ -10,7 +10,7 @@ export interface Reservation {
    displayName: string;
    emailAddress: string;
    guests: number;
-   date: Date;
+   date: DateTimeFormat;
    comments: string;
 }
 
