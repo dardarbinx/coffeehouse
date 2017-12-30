@@ -17,11 +17,6 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { LocationComponent } from './location/location.component';
 import { OpeninghoursComponent } from './openinghours/openinghours.component';
 
-// Angular Material
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material';
-
 // Google Maps API
 import { AgmCoreModule } from '@agm/core';
 
@@ -58,9 +53,6 @@ import { DataService } from './_services/data.service';
     ReactiveFormsModule,
     AppRoutingModule,
     AppBootstrapModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSliderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBDSsSaC6fWYl6usbSehP5KWwUhMm7Pq84'
     }),
@@ -71,9 +63,6 @@ import { DataService } from './_services/data.service';
     ToastModule.forRoot(),
   ],
   exports: [
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSliderModule,
     SharedModule
   ],
   providers: [
