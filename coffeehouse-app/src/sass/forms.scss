@@ -49,10 +49,10 @@ label .label-text {
 
 label input:focus+.label-text,
 label select:focus+.label-text {
-  -moz-transform: translateY(-55px);
-  -ms-transform: translateY(-55px);
-  -webkit-transform: translateY(-55px);
-  transform: translateY(-55px);
+  -moz-transform: translateY(-60px);
+  -ms-transform: translateY(-60px);
+  -webkit-transform: translateY(-60px);
+  transform: translateY(-60px);
   transition: all 0.3s;
 }
 
@@ -60,10 +60,10 @@ label input:valid+.label-text,
 .error label input+.label-text,
 label select:valid+.label-text,
 .error label select+.label-text {
-  -moz-transform: translateY(-55px);
-  -ms-transform: translateY(-55px);
-  -webkit-transform: translateY(-55px);
-  transform: translateY(-55px);
+  -moz-transform: translateY(-60px);
+  -ms-transform: translateY(-60px);
+  -webkit-transform: translateY(-60px);
+  transform: translateY(-60px);
 }
 
 .form-control:focus {
