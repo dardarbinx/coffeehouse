@@ -27,7 +27,7 @@ exports.listener = functions.firestore.document('/reservations/{uid}').onCreate(
         `Dear ${data.displayName},
 
 Thanks for making a reservation. Here are your reservation details:
-Date: ${data.date}.
+Date: ${data.date}, at ${data.hour}
 Number of guests: ${data.guests}.
 Comments: ${data.comments}
 
