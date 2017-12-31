@@ -1,10 +1,10 @@
 <div [formGroup]="formGroup"
-      [ngClass]="{
+     [ngClass]="{
         'error':
           formGroup.controls[controlName].errors &&
           formGroup.controls[controlName].dirty
       }">
-  <label>
+   <label>
     <ng-content></ng-content>
     <!-- Validation -->
     <div *ngIf="formGroup.controls[controlName].errors &&
@@ -14,6 +14,9 @@
         {{ label }} is required.
       </div>
       <div class="msg" [hidden]="!formGroup.controls[controlName].errors.patternInvalid">
+        {{ label }} is invalid.
+      </div>
+      <div class="msg" [hidden]="!formGroup.controls[controlName].errors.dateInvalid">
         {{ label }} is invalid.
       </div>
     </div>
