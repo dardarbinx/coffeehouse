@@ -4,13 +4,15 @@ import {
    AngularFirestoreCollection
 } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { Moment } from 'moment';
 
 export interface Reservation {
    id?: string;
    displayName: string;
    emailAddress: string;
    guests: number;
-   date: DateTimeFormat;
+   date: Moment;
+   time: Moment;
    comments: string;
 }
 

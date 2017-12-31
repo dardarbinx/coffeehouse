@@ -11,6 +11,11 @@ select {
   padding: 8px;
   color: #495057;
   border-radius: 0 !important;
+  width: 100%;
+}
+
+select {
+  border-color: #ced4da !important;
 }
 
 textarea {
@@ -21,6 +26,7 @@ textarea {
   font-weight: 400;
   color: #495057;
   border-radius: 0 !important;
+
   &::placeholder {
     font-size: 0.9rem;
     color: #495057;
@@ -28,6 +34,14 @@ textarea {
   }
 }
 
+// Don't show browser placeholders
+input[type=date],
+input[type=time],
+input[type=select] {
+  &:not(:focus):not(:valid) {
+    color: transparent;
+  }
+}
 
 /*
 Shows label in input field and smoothly goes to top when there's input
@@ -40,24 +54,28 @@ Shows label in input field and smoothly goes to top when there's input
 label {
   display: block;
   width: 100%;
-
   &:hover {
     cursor: pointer;
   }
-
   /deep/ .label-text {
     &.animate {
       -moz-transform: translateY(-18px);
-    -ms-transform: translateY(-18px);
-    -webkit-transform: translateY(-18px);
-    transform: translateY(-18px);
-    transition: all 0.3s;
+      -ms-transform: translateY(-18px);
+      -webkit-transform: translateY(-18px);
+      transform: translateY(-18px);
+      transition: all 0.3s;
+      &.has-icon {
+        -moz-transform: translate(25px, -18px);
+        -ms-transform: translate(25px, -18px);
+        -webkit-transform: translate(25px, -18px);
+        transform: translate(25px, -18px);
+        transition: all 0.3s;
+      }
     }
     &.noanimate {
       transform: translateY(-60px);
     }
   }
-
   /deep/ input:focus,
   /deep/ input:valid,
   /deep/ select:focus,
@@ -88,7 +106,7 @@ label {
   &:hover {
     cursor: pointer;
   }
-  &:focus {
+  &:focus, &:valid {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     background-color: inherit !important;

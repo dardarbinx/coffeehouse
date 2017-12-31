@@ -1,111 +1,109 @@
 <div class="content">
-   <div class="container jumbotron d-flex flex-column align-items-center my-0 my-md-2 col-12 col-md-10 col-lg-6">
-      <h1 class="title-font mr-auto pb-4">Reservation</h1>
-      <form [formGroup]="reservationForm"
-            class="col-12 col-lg-10">
+  <div class="container jumbotron d-flex flex-column align-items-center my-0 my-md-2 col-12 col-md-10 col-lg-6">
+    <h1 class="title-font mr-auto pb-4">Reservation</h1>
+    <form [formGroup]="reservationForm"
+          class="col-12 col-lg-11 row">
 
-         <!-- Email -->
-         <app-validated-input class="pb-1 pt-4"
-                              [formGroup]="reservationForm.controls.requester"
-                              controlName="emailAddress"
-                              label="Email Address">
-            <input [formGroup]="reservationForm.controls.requester"
-                   formControlName="emailAddress"
-                   required
-                   class="form-control form-control-lg col-12 p-0"
-                   type="text">
-            <div class="label-text animate">
-               Email Address
-            </div>
-         </app-validated-input>
-
-         <!-- Name -->
-         <app-validated-input class="pb-1 pt-4"
-                              [formGroup]="reservationForm.controls.requester"
-                              controlName="displayName"
-                              label="Full Name">
-            <input [formGroup]="reservationForm.controls.requester"
-                   formControlName="displayName"
-                   required
-                   class="form-control form-control-lg col-12 p-0"
-                   type="text">
-            <div class="label-text animate">
-               Full name
-            </div>
-         </app-validated-input>
-
-         <!-- Date -->
-         <app-validated-input [formGroup]="reservationForm.controls.time"
-                              class="col-12 col-md-8 px-0"
-                              controlName="date"
-                              label="Date">
-            <i class="fa fa-lg fa-calendar cursor-pointer"></i>
-            <input id="datepicker"
-                   type="date"
-                   required
-                   class="form-control"
-                   formControlName="date"
-                   [formGroup]="reservationForm.controls.time">
-            <div class="label-text noanimate">Date</div>
-         </app-validated-input>
-         <app-validated-input [formGroup]="reservationForm.controls.time"
-                              class="col-12 col-md-4 px-0"
-                              controlName="hour"
-                              label="Time">
-            <i class="fa fa-lg fa-clock-o cursor-pointer"></i>
-            <input id="timepicker"
-                   class="form-control"
-                   type="time"
-                   formControlName="hour"
-                   [formGroup]="reservationForm.controls.time">
-            <div class="label-text noanimate">Time</div>
-         </app-validated-input>
-         <!-- <label class="col-12 col-md-4 p-0">
-        <i class="fa fa-lg fa-clock-o cursor-pointer"></i>
-        <input id="timepicker" class="form-control" type="time">
-        <div class="label-text">
-          Time
+      <!-- Email -->
+      <app-validated-input class="pb-1 pt-4 col-12"
+                           [formGroup]="reservationForm"
+                           controlName="emailAddress"
+                           label="Email Address">
+        <input [formGroup]="reservationForm"
+               formControlName="emailAddress"
+               required
+               class="form-control form-control-lg col-12 p-0"
+               type="text">
+        <div class="label-text animate">
+          Email Address
         </div>
-      </label> -->
+      </app-validated-input>
 
+      <!-- Name -->
+      <app-validated-input class="pb-1 pt-4 col-12"
+                           [formGroup]="reservationForm"
+                           controlName="displayName"
+                           label="Full Name">
+        <input [formGroup]="reservationForm"
+               formControlName="displayName"
+               required
+               class="form-control form-control-lg col-12 p-0"
+               type="text">
+        <div class="label-text animate">
+          Full name
+        </div>
+      </app-validated-input>
 
-         <!-- Guests -->
-         <div class="form-group row">
-            <label>
-            <select class="form-control">
-              <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12]">{{i}}</option>
-            </select>
-            <div class="label-text noanimate">
-              Number of guests
-            </div>
-        </label>
-         </div>
+      <!-- Date -->
+      <app-validated-input [formGroup]="reservationForm"
+                           class="col-12 col-md-7"
+                           controlName="date"
+                           label="Date">
+        <i class="fa fa-lg fa-calendar cursor-pointer"></i>
+        <input id="datepicker"
+               type="date"
+               required
+               class="form-control"
+               formControlName="date"
+               [formGroup]="reservationForm">
+        <div class="label-text animate has-icon">Date</div>
+      </app-validated-input>
 
-         <!-- Comments -->
-         <div class="form-group row">
-            <textarea class="form-control"
-                      formControlName="comments"
-                      id="comments"
-                      rows="3"
-                      placeholder="Comments"
-                      [ngClass]="{'value':this.reservationForm.get('comments').value}"></textarea>
-         </div>
+      <!-- Time -->
+      <app-validated-input [formGroup]="reservationForm"
+                           class="col-12 col-md-5"
+                           controlName="hour"
+                           label="Time">
+        <i class="fa fa-lg fa-clock-o cursor-pointer"></i>
+        <input id="timepicker"
+               class="form-control"
+               type="time"
+               required
+               formControlName="hour"
+               [formGroup]="reservationForm">
+        <div class="label-text animate has-icon">Time</div>
+      </app-validated-input>
 
-         <!-- Submit -->
-         <div class="col-12 d-flex justify-content-center">
-            <div class="p-4">
-               <button type="submit"
-                       class="btn btn-lg btn-outline-danger mx-auto cursor-pointer"
-                       (click)="clearForm()">Clear</button>
-               <button type="submit"
-                       class="btn btn-lg btn-primary mx-auto cursor-pointer"
-                       (click)="submitForm()"
-                       [disabled]="reservationForm.invalid">Submit</button>
-            </div>
-         </div>
-      </form>
-   </div>
+      <!-- Guests -->
+      <app-validated-input [formGroup]="reservationForm"
+                           class="col-12 col-md-6 pb-1 pt-4 d-flex flex-row align-items-end"
+                           controlName="guests"
+                           label="Number of guests">
+        <select required
+                id="guestSelect"
+                class="p-0 m-0 form-control height-100"
+                formControlName="guests">
+          <option *ngFor="let i of [null,1,2,3,4,5,6,7,8,9,10,11,12]">{{ i }}</option>
+        </select>
+        <div class="label-text animate">
+          Guests
+        </div>
+      </app-validated-input>
 
-   <!-- Footer -->
-   <app-bottombar></app-bottombar>
+      <!-- Comments -->
+      <div class="col-12 pt-4">
+        <textarea class="form-control"
+                  formControlName="comments"
+                  id="comments"
+                  rows="3"
+                  placeholder="Comments"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="col-12 d-flex justify-content-center">
+        <div class="p-4">
+          <button type="submit"
+                  class="btn btn-lg btn-outline-danger mx-auto cursor-pointer"
+                  (click)="clearForm()">Clear</button>
+          <button type="submit"
+                  class="btn btn-lg btn-primary mx-auto cursor-pointer"
+                  (click)="submitForm()"
+                  [disabled]="reservationForm.invalid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <app-bottombar></app-bottombar>
 </div>

@@ -56,25 +56,24 @@ export class ReservationComponent {
       email = this.user.email;
     }
 
-    this.reservationForm = this.fb.group({
-      // Use nested form groups to be able to use validated-input.component
-      requester: this.fb.group({
-        emailAddress: new FormControl(email, [
-          Validators.required,
-          emailPatternValidator()
-        ]),
-        displayName: new FormControl(displayName,
-          Validators.required)
-      }),
-      time: this.fb.group({
-        date: new FormControl(moment().format('YYYY-MM-DD'), [
-          Validators.required,
-          dateValidator()
-        ]),
-        hour: new FormControl(moment().format('HH:mm'))
-      }),
-      // Validation messages not needed
-      guests: new FormControl(4),
+    this.reservationForm = new FormGroup({
+      emailAddress: new FormControl(email, [
+        Validators.required,
+        emailPatternValidator()
+      ]),
+      displayName: new FormControl(displayName, [
+        Validators.required
+      ]),
+      date: new FormControl(null, [
+        Validators.required,
+        dateValidator()
+      ]),
+      hour: new FormControl(null, [
+        Validators.required
+      ]),
+      guests: new FormControl(null, [
+        Validators.required
+      ]),
       comments: new FormControl('')
     });
   }
@@ -84,12 +83,14 @@ export class ReservationComponent {
   }
 
   submitForm(): void {
+    console.log(this.reservationForm);
     this.dataService.addReservation({
-      displayName: this.reservationForm.get('requester.displayName').value,
-      emailAddress: this.reservationForm.get('requester.emailAddress').value,
-      guests: this.reservationForm.controls.guests.value,
-      date: this.reservationForm.get('time.date').value,
-      comments: this.reservationForm.controls.comments.value
+      displayName: this.reservationForm.get('displayName').value,
+      emailAddress: this.reservationForm.get('emailAddress').value,
+      guests: this.reservationForm.get('guests').value,
+      date: this.reservationForm.get('date').value,
+      time: this.reservationForm.get('hour').value,
+      comments: this.reservationForm.get('comments').value
     }).then((response) => {
       this.toastr.success('Successfully saved reservation!');
       this.clearForm();
