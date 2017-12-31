@@ -9,22 +9,10 @@ import { FormGroup } from '@angular/forms';
     '../../../sass/forms.scss'
   ]
 })
-export class ValidatedInputComponent implements OnInit {
+export class ValidatedInputComponent {
 
   @Input() formGroup: FormGroup;
-
   @Input() controlName: string;
-  @Input() inputId = 'inputId';
-  @Input() placeholder: string;
-  @Input() formType: string;
-  @Input() inputValue: string;
   @Input() label: string;
-
-  @Input() required = false;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

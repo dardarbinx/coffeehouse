@@ -5,12 +5,12 @@
   right: 0;
   top: -20px;
 }
-.error input {
+.error /deep/ input {
   &:not(:focus) {
     border-bottom: 1px solid $danger;
     color: $danger;
 
-    &~.error-msg>.msg {
+    ~.error-msg>.msg {
       display: block;
       color: $danger !important;
     }

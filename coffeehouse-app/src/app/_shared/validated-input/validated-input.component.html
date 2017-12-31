@@ -1,21 +1,11 @@
-<div class="form-group row pt-1"
-      [formGroup]="formGroup"
+<div [formGroup]="formGroup"
       [ngClass]="{
         'error':
           formGroup.controls[controlName].errors &&
           formGroup.controls[controlName].dirty
       }">
-
   <label>
-    <input [value]="inputValue"
-          [formControlName]="controlName"
-          required
-          class="form-control form-control-lg col-12 p-0"
-          [type]="formType"
-          [id]="inputId">
-    <div class="label-text">
-      {{ label }}
-    </div>
+    <ng-content></ng-content>
     <!-- Validation -->
     <div *ngIf="formGroup.controls[controlName].errors &&
               !formGroup.controls[controlName].pristine"

@@ -17,6 +17,7 @@ import { emailPatternValidator } from '../_shared/validators/email-pattern-valid
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { AuthService } from '../_services/auth.service';
 import * as moment from 'moment';
+import { dateValidator } from '../_shared/validators/date-validator';
 
 @Component({
    selector: 'app-reservation',
@@ -57,20 +58,24 @@ export class ReservationComponent {
 
       this.reservationForm = this.fb.group({
          // Use nested form groups to be able to use validated-input.component
-         emailAddress: this.fb.group({
+         requester: this.fb.group({
             emailAddress: new FormControl(email, [
                Validators.required,
                emailPatternValidator()
-            ])
-         }),
-         displayName: this.fb.group({
+            ]),
             displayName: new FormControl(displayName,
-               Validators.required)
+              Validators.required)
+         }),
+         time: this.fb.group({
+           date:  new FormControl(moment().format('LLLL'), [
+             Validators.required,
+             dateValidator()
+           ]),
+           hour: new FormControl(moment().format('LLLL'))
          }),
          // Validation messages not needed
          guests: new FormControl(4),
-         date: new FormControl(moment().format('LLLL')),
-         time: new FormControl(moment().format('LLLL')),
+        //  time: new FormControl(moment().format('LLLL')),
          comments: new FormControl('')
       });
    }

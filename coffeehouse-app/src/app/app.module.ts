@@ -16,6 +16,7 @@ import { AboutComponent } from './about/about.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { LocationComponent } from './location/location.component';
 import { OpeninghoursComponent } from './openinghours/openinghours.component';
+import { LoginComponent } from './login/login.component';
 
 // Google Maps API
 import { AgmCoreModule } from '@agm/core';
@@ -25,14 +26,13 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
-import { LoginComponent } from './login/login.component';
 
 // Services
 import { AuthService } from './_services/auth.service';
+import { DataService } from './_services/data.service';
 
 // Guards
 import { AuthGuard } from './_guards/auth.guard';
-import { DataService } from './_services/data.service';
 
 @NgModule({
   declarations: [
