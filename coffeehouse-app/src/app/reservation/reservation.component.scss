@@ -1,0 +1,12 @@
+@import '../../sass/_variables.scss';
+
+#datepicker, #timepicker, #guestSelect {
+  padding: 0px;
+  padding-left: 1.5rem;
+}
+
+i.fa {
+  position: relative;
+  left: 0;
+  top: 1.5rem;
+}

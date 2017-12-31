@@ -1,0 +1,13 @@
+<app-login></app-login>
+
+<div id="background" class="fill background-img pb-0 px-0 pt-0">
+  <app-topbar></app-topbar>
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Firebase -->
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.name}}
+  </li>
+</ul>

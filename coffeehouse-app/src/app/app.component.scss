@@ -1,0 +1,39 @@
+@import '../sass/_variables.scss';
+
+.background-img {
+  z-index: -1;
+  background-image: radial-gradient(circle at center, rgba(233, 233, 233, 0.582) 0, rgba(59, 59, 59, 0.685)), url(../assets/images/bg_img1.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+// Takes up all window space, except topbar
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-bottom: $footer-height;
+  overflow-y: auto;
+}
+
+// Select div with class="content" within sibling of router-outlet
+:host /deep/ router-outlet + * > .content {
+  position: relative;
+  padding-top: $navbar-height;
+  padding-bottom: $footer-height;
+  min-height: 100vh;
+
+  footer {
+    position:absolute;
+    bottom: 0;
+
+    width: 100%;
+
+    box-shadow: 0px -2px 2px;
+    z-index: 1000;
+  }
+}

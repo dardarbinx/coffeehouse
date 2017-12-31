@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/scss/bootswatch.scss';
+// @import "~@angular/material/prebuilt-themes/purple-green.css";
+@import '~font-awesome/css/font-awesome.css';
+@import "sass/_variables.scss";
+@import "sass/_animations.scss";
+
+@font-face {
+  font-family: "GrandHotel";
+  src: url("./assets/fonts/GrandHotel-Regular.ttf");
+}
+
+.title-font {
+  font-family: "GrandHotel";
+}
+
+.navbar-dark {
+  background-color: $chocolate;
+}
+
+.container.jumbotron {
+  background-color: rgba(255,255,255,0.75);
+  border-top: 4px solid $chocolate;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.width-100 {
+  width: 100%;
+}

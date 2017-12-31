@@ -1,0 +1,19 @@
+@import '../../../sass/_variables.scss';
+
+.error-msg>.msg {
+  position: absolute;
+  right: 0;
+  top: -20px;
+}
+.error /deep/ input {
+  &:not(:focus) {
+    border-bottom: 1px solid $danger;
+    color: $danger;
+
+    ~.error-msg>.msg {
+      display: block;
+      color: $danger !important;
+    }
+  }
+}
+

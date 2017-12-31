@@ -1,0 +1,18 @@
+i {
+  color: #FFF;
+  animation-name: highlight-end;
+  animation-duration: 1s;
+  opacity: 0.5;
+
+  &:hover{
+    animation-name: highlight-start;
+    animation-duration: 1s;
+    opacity: 0.85;
+  }
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
