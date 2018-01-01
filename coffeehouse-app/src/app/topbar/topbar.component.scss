@@ -52,3 +52,53 @@
 #app-title {
   color: white;
 }
+
+
+// xs screens specific
+@media screen and (max-width: 992px) {
+  .navbar-collapse {
+    height: 100vh;
+    transition: height 0.6s;
+    text-align: center;
+
+    .navbar-nav {
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+
+      .nav-item {
+        width: 75vw;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 1);
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+        padding: 0.75rem;
+
+        * {
+          color: rgba(255, 255, 255, 1);
+          font-size: large;
+          text-align: center;
+        }
+
+        &:last-child {
+          border-bottom: 0px;
+        }
+      }
+    }
+
+    button {
+      margin: 0 auto !important;
+      font-size: medium;
+      padding: 0.8rem;
+    }
+  }
+
+  .navbar-collapse.collapse.in {
+    height: 100vh !important;
+    transition: height 0.6s ;
+  }
+
+  .navbar-collapse.collapsing {
+    height: 0 !important;
+    transition: height 0.6s ;
+  }
+}
+
