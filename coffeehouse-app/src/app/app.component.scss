@@ -22,7 +22,7 @@
 
 // Select div with class="content" within sibling of router-outlet
 :host /deep/ router-outlet + * > .content {
-  margin-top: $navbar-height;
+  margin-top: 0;
   padding-bottom: $footer-height;
   min-height: 100vh;
 

@@ -12,6 +12,11 @@
   width: 100%;
   z-index: 10;
 
+  @media screen and (max-width: 992px) {
+    background-image: none;
+    background-color: #151212;
+  }
+
   &.background-color {
     background-color: rgba(0,0,0,1);
   }
