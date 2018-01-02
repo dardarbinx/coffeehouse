@@ -29,18 +29,70 @@
   font-size: x-large;
 }
 
-#logo-icon {
+#logo-icon.invert {
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
 
 #app-title {
   color: white;
+  z-index: 15;
 }
 
+/* lg screens only */
+@media screen and (min-width: 992px) {
+  #app-title {
+    color: black;
+    margin-left: 3rem;
+    width: 14rem;
+    text-align: center;
+    transition: opacity ease-in 0.3s;
+  }
+
+  :host /deep/ #test {
+    &>* {
+      margin-left: 3rem;
+      position: absolute;
+      width: 14rem;
+      height: 50vh;
+      top: 0;
+      left: 3rem;
+      overflow: hidden;
+      background-color: transparent;
+      padding-bottom: 10rem;
+    }
+
+    &>*:before,
+    &>*:after {
+      content: '';
+      display: block;
+      height: 90%;
+      width: 230%;
+      transform: rotate(25deg);
+      background-color: #e9ecef;
+      position: absolute;
+      top: 1px;
+      right: -120%;
+    }
+
+    &>*:after {
+      transform: rotate(-25deg);
+      left: -120%;
+    }
+  }
+}
 
 // xs screens specific
 @media screen and (max-width: 992px) {
+  :host /deep/ #test {
+    display:none;
+  }
+
+  #logo-icon {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+
   .navbar-collapse {
     height: 100vh;
     transition: height 0.6s;

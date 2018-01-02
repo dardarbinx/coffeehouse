@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -18,6 +18,10 @@ export class TopbarComponent {
     this.authService.loggedIn$.subscribe((value) => {
       this.loggedIn = value;
     });
+  }
+
+  onDashboard(): boolean {
+    return this.router.url === '/dashboard';
   }
 
   navigate(path: string): void {

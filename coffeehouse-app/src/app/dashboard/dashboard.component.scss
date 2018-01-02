@@ -2,7 +2,7 @@
   font-size: 4rem;
   text-align: center;
   color: #FFF;
-  padding-top: 25%;
+  padding-top: 12rem;
 }
 
 #dashboard-subtitle {
@@ -15,8 +15,15 @@ i {
   color: #FFF;
 }
 
+
+
+/* xs screens only */
 @media screen and (max-width: 992px) {
+  #dashboard-title {
+    padding-top: 25%;
+  }
   #dashboard-subtitle {
     font-size: 1.5rem;
   }
 }
+

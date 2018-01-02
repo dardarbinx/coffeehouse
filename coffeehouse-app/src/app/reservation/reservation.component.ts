@@ -34,14 +34,12 @@ export class ReservationComponent {
   reservationForm: FormGroup;
   today = moment().format('LLLL');
 
-  constructor(private authService: AuthService,
-    private dataService: DataService,
-    private fb: FormBuilder,
+  constructor(protected authService: AuthService,
+    protected dataService: DataService,
     public toastr: ToastsManager,
-    private vRef: ViewContainerRef) {
+    protected vRef: ViewContainerRef) {
 
     this.toastr.setRootViewContainerRef(vRef);
-
     this.authService.user$.subscribe(user => {
       this.user = user;
       this.createForm();

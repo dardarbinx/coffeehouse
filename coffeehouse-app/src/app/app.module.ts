@@ -33,6 +33,7 @@ import { DataService } from './_services/data.service';
 
 // Guards
 import { AuthGuard } from './_guards/auth.guard';
+import { ReservationMiniComponent } from './reservation/reservation-mini/reservation-mini.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AuthGuard } from './_guards/auth.guard';
     ReservationComponent,
     LocationComponent,
     OpeninghoursComponent,
-    LoginComponent
+    LoginComponent,
+    ReservationMiniComponent
   ],
   imports: [
     BrowserModule,

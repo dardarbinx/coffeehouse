@@ -1,0 +1,62 @@
+<div class="container jumbotron d-flex flex-column align-items-center col-12 width-100 px-1">
+  <form [formGroup]="reservationForm" class="row">
+    <!-- Date -->
+    <app-validated-input [formGroup]="reservationForm"
+                          class="col-12"
+                          controlName="date"
+                          label="Date">
+      <i class="fa fa-lg fa-calendar cursor-pointer"></i>
+      <input id="datepicker"
+              type="date"
+              required
+              class="form-control"
+              formControlName="date"
+              [formGroup]="reservationForm">
+      <div class="label-text animate has-icon">Date</div>
+    </app-validated-input>
+
+    <!-- Time -->
+    <app-validated-input [formGroup]="reservationForm"
+                          class="col-12"
+                          controlName="hour"
+                          label="Time">
+      <i class="fa fa-lg fa-clock-o cursor-pointer"></i>
+      <input id="timepicker"
+              class="form-control"
+              type="time"
+              required
+              formControlName="hour"
+              [formGroup]="reservationForm">
+      <div class="label-text animate has-icon">Time</div>
+    </app-validated-input>
+
+    <!-- Guests -->
+    <app-validated-input [formGroup]="reservationForm"
+                          class="col-12 d-flex flex-row align-items-end"
+                          controlName="guests"
+                          label="Number of guests">
+      <select required
+              id="guestSelect"
+              class="p-0 m-0 form-control height-100 mt-3"
+              formControlName="guests">
+        <option *ngFor="let i of [null,1,2,3,4,5,6,7,8,9,10,11,12]">{{ i }}</option>
+      </select>
+      <div class="label-text animate">
+        Guests
+      </div>
+    </app-validated-input>
+
+    <!-- Submit -->
+    <div class="col-12 d-flex justify-content-center mt-2">
+      <div class="">
+        <button type="submit"
+                class="btn btn-sm btn-outline-dark mx-auto cursor-pointer"
+                (click)="nextStep()"
+                [disabled]="reservationForm.invalid">
+          Make reservation
+          <i class="fa fa-angle-double-right"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
